@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <getopt.h>
+
 typedef struct flags {
     int b;
     int e;
@@ -11,5 +13,7 @@ typedef struct flags {
     int s;
     int t;
 } flags;
+
+void reading_parameters(int* argc, char* argv[], flags* param);
 
 #endif  // SRC_S21_CAT_H_

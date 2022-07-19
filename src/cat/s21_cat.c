@@ -7,10 +7,18 @@
 
 #include "s21_cat.h"
 
-fla
-
 int main(int argc, char* argv[]) {
-    flags start = {0};
-
+    if (argc > 1) {
+        if (*argv[0] != "cat") {
+            fprintf(stderr, "Введена не функция cat\n");
+            return 1;
+        }
+        flags start = {0};
+        reading_parameters(&argc, argv, &start);
+        
+    } else {
+        fprintf(stderr, "Недостаточно аргументов для выполнения функции\n");
+        return 1;
+    }
     return 0;
 }
