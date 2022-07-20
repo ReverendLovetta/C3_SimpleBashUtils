@@ -15,5 +15,8 @@ typedef struct flags {
 } flags;
 
 char** reading_parameters(int* argc, char* argv[], flags* param);
-
+void s21_cat_core(flags* param, int argc_core, char* argv_core[]);
+FILE* s21_open_file(const char filename[]);
+void s21_use_flags(flags* param, FILE* file_string, const char argv_core[]);
+void s21_print_file(const char argv_core[]);
 #endif  // SRC_S21_CAT_H_
