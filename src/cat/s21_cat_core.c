@@ -6,8 +6,8 @@
 
 void s21_cat_core(flags* param, int argc_core, char* argv_core[]) {
   for (int i = 0; i < argc_core; i++) {
-    FILE* file = s21_open_file(*argv_core[i]);
-    s21_use_flags(param, file, *argv_core[i]);
+    FILE* file = s21_open_file(argv_core[i]);
+    s21_use_flags(param, file, argv_core[i]);
     s21_close_file(file);
   }
 }
