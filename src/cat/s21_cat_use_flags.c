@@ -9,13 +9,16 @@ void s21_cat_use_flags(flags* param, FILE *file) {
   char c = '\0';
   int i = 0;
   int j = 0;
+  char temp1 = '\0';
 #endif  // __APPLE__
+
 #ifdef __linux__
   int c = 0;
   static int i = 1;
+  static char temp1 = '\0';
   //static int j = 0;
 #endif  // __linux__
-  char temp1 = '\0';
+  
   //char temp2 = '\0';
   char flag_first_str = '0';
   while ((c = fgetc(file)) != EOF) {
@@ -23,7 +26,7 @@ void s21_cat_use_flags(flags* param, FILE *file) {
       if (param->n == 1) {
         param->n = 0;
       }
-      if ((temp1 == '\n' && c != '\n') || flag_first_str == '0') {
+      if ((temp1 == '\n' && c != '\n') || i == 1) {
         printf("%6d\t", i);
         i++;
       }
