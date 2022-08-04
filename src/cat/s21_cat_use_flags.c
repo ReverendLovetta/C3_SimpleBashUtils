@@ -38,7 +38,12 @@ void s21_cat_use_flags(flags* param, FILE *file) {
     //   if (temp1 == '\n') {
     //         }
     // } else if (param->s == 1) {
-    // } else if (param->t == 1) {
+    if (param->t == 1) {
+      if (c == '\t') {
+        printf("^");
+        c = 'I';
+      }
+    }
     // } else if (param->v == 1) {
     // }
     if (param->e == 1) {

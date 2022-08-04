@@ -1,13 +1,13 @@
 this is the first test for cat
-this is test file
+this is test    file
 it is very interesting, maybe :)
 
 
-fsdgsdgsdgsdgsd
+fsdgsdgs    dgsdgsd
 
-sdfgsdgsdg sdgsdgsdgsd dgsdfs
+sdfgs   dgsdg sdgsd gsdgsd dgsdfs
 
-sdfgsdgsdfgsdgsd
+sdfgsdgsdf      gsdgsd
 
 
-sdfgsdfgsdfgsdgsdgsdfgsd
+sdfgs       dfgsdfgsdgsdgsdfgsd
