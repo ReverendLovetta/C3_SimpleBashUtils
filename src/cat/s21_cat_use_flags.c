@@ -19,7 +19,7 @@ void s21_cat_use_flags(flags* param, FILE *file) {
   static int j = 1;
 #endif  // __linux__
   
-  //char temp2 = '\0';
+  char temp2 = '\0';
   char flag_first_str = '0';
   while ((c = fgetc(file)) != EOF) {
     if (param->b == 1) {
@@ -31,13 +31,15 @@ void s21_cat_use_flags(flags* param, FILE *file) {
         i++;
       }
     }
+    if (param->s == 1) {
+      if (temp2 == '\n' && temp1 == '\n' && c == '\n') {
+        continue;
+      }
+    }
     if (param->n == 1 && (temp1 == '\n' || j == 1)) {
       printf("%6d\t", j);
       j++;
     }
-    //   if (temp1 == '\n') {
-    //         }
-    // } else if (param->s == 1) {
     if (param->t == 1) {
       if (c == '\t') {
         printf("^");
@@ -52,7 +54,7 @@ void s21_cat_use_flags(flags* param, FILE *file) {
       }
     }
     printf("%c", c);
-    //temp2 = temp1;
+    temp2 = temp1;
     temp1 = c;
     if (flag_first_str == '0') {
       flag_first_str = '1';
