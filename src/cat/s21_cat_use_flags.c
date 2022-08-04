@@ -16,7 +16,7 @@ void s21_cat_use_flags(flags* param, FILE *file) {
   int c = 0;
   static int i = 1;
   static char temp1 = '\0';
-  //static int j = 0;
+  static int j = 1;
 #endif  // __linux__
   
   //char temp2 = '\0';
@@ -31,8 +31,9 @@ void s21_cat_use_flags(flags* param, FILE *file) {
         i++;
       }
     // } else if (param->e == 1) {
-    } if (param->n == 1 && temp1 == '\n') {
-      printf("\nПараметр n активировался\n");
+    } if (param->n == 1 && (temp1 == '\n' || j == 1)) {
+      printf("%6d\t", j);
+      j++;
     }
     //   if (temp1 == '\n') {
     //         }
