@@ -30,8 +30,8 @@ void s21_cat_use_flags(flags* param, FILE *file) {
         printf("%6d\t", i);
         i++;
       }
-    // } else if (param->e == 1) {
-    } if (param->n == 1 && (temp1 == '\n' || j == 1)) {
+    }
+    if (param->n == 1 && (temp1 == '\n' || j == 1)) {
       printf("%6d\t", j);
       j++;
     }
@@ -41,6 +41,11 @@ void s21_cat_use_flags(flags* param, FILE *file) {
     // } else if (param->t == 1) {
     // } else if (param->v == 1) {
     // }
+    if (param->e == 1) {
+      if (c == '\n') {
+        printf("$");
+      }
+    }
     printf("%c", c);
     //temp2 = temp1;
     temp1 = c;
