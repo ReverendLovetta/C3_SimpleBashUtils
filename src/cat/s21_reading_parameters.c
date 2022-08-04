@@ -42,6 +42,10 @@ char** reading_parameters(int* argc, char* argv[], flags* param) {
   }
 #endif  // __APPLE__
 #ifdef __linux__
+  printf("Массив до обработки:\n");
+  for (int i = 0; i < *argc; i++) {
+    printf("Элемент %d-й массива: %s\n", i, argv[i]);
+  }
   const char* short_options = "benstET";
   const struct option long_options[] = {
       {"number-nonblank", no_argument, NULL, 'b'},
@@ -81,8 +85,14 @@ char** reading_parameters(int* argc, char* argv[], flags* param) {
       }
     }
   }
+  printf("optind1 = %d\n", optind);
   *argc = *argc - optind;
-  *argv += optind;
+  argv += optind;
+  printf("Массив после обработки\n");
+  printf("argc после = %d\n", *argc);
+  for (int j = 0; j < *argc; j++) {
+    printf("%d-й элемент массива: %s\n", j, argv[j]);
+  }
   return argv;
 #endif  // __linux__
 }
