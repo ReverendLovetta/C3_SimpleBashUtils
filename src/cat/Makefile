@@ -6,7 +6,7 @@ SOURCE_DIR = .
 
 all: *.c s21_cat.h
 	$(CC) $(CFLAGS) -c *.c
-	$(CC) $(CFLAGS) *.o -o s21_cat.out
+	$(CC) $(CFLAGS) *.o -o s21_cat
 
 clean:
 	@find . -name "*.o" -exec rm -f {} \;

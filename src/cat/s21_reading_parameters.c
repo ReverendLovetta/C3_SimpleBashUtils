@@ -7,7 +7,7 @@
 char** reading_parameters(int* argc, char* argv[], flags* param) {
 #ifdef __APPLE__
   char ch;
-  while ((ch = getopt(*argc, argv, "benst")) != EOF) {
+  while ((ch = getopt(*argc, argv, "benstv")) != EOF) {
     switch (ch) {
       case 'b': {
         param->b = 1;
@@ -31,15 +31,19 @@ char** reading_parameters(int* argc, char* argv[], flags* param) {
         param->v = 1;
         break;
       }
+      case 'v': {
+        param->v = 1;
+        break;
+      }
       default: {
         fprintf(stderr, "Неизвестный параметр: '%s'\n", optarg);
         exit(1);
       }
     }
-    *argc = *argc - optind;
-    argv += optind;
-    return argv;
   }
+  *argc = *argc - optind;
+  argv += optind;
+  return argv;
 #endif  // __APPLE__
 #ifdef __linux__
   printf("Массив до обработки:\n");

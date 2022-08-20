@@ -4,7 +4,7 @@
 
 #include "s21_cat.h"
 
-void s21_cat_use_flags(flags* param, FILE *file) {
+void s21_cat_use_flags(flags* param, FILE* file) {
 #ifdef __APPLE__
   char c = '\0';
   int i = 0;
@@ -18,7 +18,7 @@ void s21_cat_use_flags(flags* param, FILE *file) {
   static char temp1 = '\0';
   static int j = 1;
 #endif  // __linux__
-  
+
   char temp2 = '\0';
   char flag_first_str = '0';
   while ((c = fgetc(file)) != EOF) {
@@ -46,8 +46,17 @@ void s21_cat_use_flags(flags* param, FILE *file) {
         c = 'I';
       }
     }
-    // } else if (param->v == 1) {
-    // }
+    if (param->v == 1) {
+      if ((c >= 0 && c < 32 && c != 9 && c != 10) || c == 127) {
+        if (c == 127)
+          c = '?';
+        else {
+          c += 64;
+          printf("%c", c);
+          continue;
+        }
+      }
+    }
     if (param->e == 1) {
       if (c == '\n') {
         printf("$");
