@@ -9,10 +9,6 @@
 
 int main(int argc, char* argv[]) {
   if (argc > 1) {
-    // if (*argv[0] != "cat") {
-    //     fprintf(stderr, "Введена не функция cat\n");
-    //     return 1;
-    // }
     flags start = {0};
     argv = reading_parameters(&argc, argv, &start);
     s21_cat_core(&start, argc, argv);
