@@ -46,23 +46,23 @@ void s21_cat_use_flags(flags* param, FILE* file) {
         c = 'I';
       }
     }
-    if (param->v == 1) {
-      if ((c >= 0 && c < 32 && c != 9 && c != 10) || c == 127) {
-        if (c == 127)
-          c = '?';
-        else {
-          c += 64;
-          printf("%c", c);
-          continue;
-        }
-      }
-    }
     if (param->e == 1) {
       if (c == '\n') {
         printf("$");
       }
     }
-    printf("%c", c);
+    if ((c >= 0 && c < 32 && c != 9 && c != 10) || c == 127) {
+      if (param->v == 1) {
+        if (c == 127)
+          c = '?';
+        else {
+          c += 64;
+        }
+        printf("%c", c);
+      }
+    } else {
+      printf("%c", c);
+    }
     temp2 = temp1;
     temp1 = c;
     if (flag_first_str == '0') {
