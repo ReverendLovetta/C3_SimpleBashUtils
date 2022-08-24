@@ -58,7 +58,17 @@ void s21_cat_use_flags(flags* param, FILE* file) {
         else {
           c += 64;
         }
-        printf("%c", c);
+        printf("^%c", c);
+      }
+    } else if (c > 127) {
+      if (param->v == 1) {
+        if (c < 160) {
+          printf("M-^%c", c - 128 + 64);
+        } else if (c == 255) {
+          printf("M-^?");
+        } else {
+          printf("M-%c", c - 128);
+        }
       }
     } else {
       printf("%c", c);

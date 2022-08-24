@@ -1,4 +1,4 @@
-/* Функция void reading_parameters(int* n, char** agrv, flags* param).
+/* Функция char** reading_parameters(int* n, char** agrv, flags* param).
  * Заполняет структуру start флагами из stdin.
  */
 
