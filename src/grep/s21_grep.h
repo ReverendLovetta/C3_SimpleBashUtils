@@ -2,8 +2,13 @@
 #define _SRC_GREP_S21_GREP_H_
 
 #include <getopt.h>
+#include <regex.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define N 10000
+#define BUF 100000
 
 typedef struct {
   int e;
@@ -18,9 +23,10 @@ typedef struct {
   int o;
 } flags;
 
-char** reading_parameters(int* argc, char* argv[], flags* param);
-void s21_grep_core(flags* param, int argc, char* argv[]);
-void s21_grep_use_flags(flags* param, FILE* file);
-FILE* s21_open_file(const char filename[]);
+char** reading_parameters_grep(int* argc, char* argv[], flags* param,
+                               char* mass);
+void s21_grep_core(int argc, char* argv[], char* mass);
+void s21_grep_use_flags(flags* param, FILE* file, char* mass);
+FILE* s21_open_file_grep(const char filename[]);
 
 #endif  // _SRC_GREP_S21_GREP_H_
