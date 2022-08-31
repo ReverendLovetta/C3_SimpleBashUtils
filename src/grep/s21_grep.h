@@ -11,16 +11,16 @@
 #define BUF 100000
 
 typedef struct {
-  unsigned int e : 1;
-  unsigned int i : 1;
-  unsigned int v : 1;
-  unsigned int c : 1;
-  unsigned int l : 1;
-  unsigned int n : 1;
-  unsigned int h : 1;
-  unsigned int s : 1;
-  unsigned int f : 1;
-  unsigned int o : 1;
+  unsigned char e : 1;
+  unsigned char i : 1;
+  unsigned char v : 1;
+  unsigned char c : 1;
+  unsigned char l : 1;
+  unsigned char n : 1;
+  unsigned char h : 1;
+  unsigned char s : 1;
+  unsigned char f : 1;
+  unsigned char o : 1;
 } flags;
 
 char** reading_parameters_grep(int* argc, char* argv[], flags* param,
