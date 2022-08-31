@@ -97,6 +97,7 @@ void s21_fill_param_f(char* mass, char* p_optarg) {
       } else {
         strcat(mass, mass_f);
       }
+      memset(mass_f, '\0', strlen(mass_f));
     }
   }
   fclose(file_f);
