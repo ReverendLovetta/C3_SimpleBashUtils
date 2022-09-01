@@ -38,7 +38,6 @@ void s21_grep_use_flags(flags* param, FILE* file, char* mass, char* filename,
     if (err == REG_NOMATCH) {
       count_n_lines++;
       if (!param->v) {
-        count_lines++;
         memset(string, '\0', strlen(string));
         continue;
       }
@@ -52,11 +51,13 @@ void s21_grep_use_flags(flags* param, FILE* file, char* mass, char* filename,
     }
     count_lines++;
     if (!param->c && !param->l) {
-      if (count_files > 1 && !param->h) {
+      if (count_files > 1 && !param->h &&
+          ((param->v && err == REG_NOMATCH && !param->o) ||
+           (!param->v && err == 0))) {
         printf("%s:", filename);
       }
       if (param->n) {
-        printf("%ld", count_lines);
+        printf("%ld:", count_lines + count_n_lines);
       }
       if (param->o && !param->v) {
         char* p_string = string;
@@ -70,21 +71,32 @@ void s21_grep_use_flags(flags* param, FILE* file, char* mass, char* filename,
           err = regexec(&compiled, p_string, n_regmatch, regmatch, REG_NOTBOL);
         }
       }
-      if (!param->o || param->v) {
+      if (strlen(string) == 0) {
+        string[0] = '\n';
+      } else if (string[strlen(string) - 1] != '\n') {
+        string[strlen(string)] = '\n';
+      }
+      if (!param->o &&
+          ((!param->v && err == 0) || (param->v && err == REG_NOMATCH))) {
         printf("%s", string);
       }
     }
     memset(string, '\0', strlen(string));
   }
-  if (param->c || param->l) {
-    if (count_files > 1 && !param->h) {
+  if (param->c) {
+    if (count_files > 1 && !param->h && !param->l) {
       printf("%s:", filename);
     }
-    if (param->l && (count_lines - count_n_lines)) {
-      printf("1\n%s\n", filename);
-    } else {
-      printf("%ld\n%s\n", count_lines, filename);
+    if (!param->l) {
+      if (!param->v) {
+        printf("%ld\n", count_lines);
+      } else {
+        printf("%ld\n", count_n_lines);
+      }
     }
+  }
+  if (param->l && count_lines) {
+    printf("%s\n", filename);
   }
   regfree(&compiled);
 }
