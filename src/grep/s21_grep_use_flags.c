@@ -57,7 +57,11 @@ void s21_grep_use_flags(flags* param, FILE* file, char* mass, char* filename,
         printf("%s:", filename);
       }
       if (param->n) {
-        printf("%ld:", count_lines + count_n_lines);
+        if ((param->v && err == REG_NOMATCH) && !param->o) {
+          printf("%ld:", count_lines);
+        } else if (!param->v && err == 0) {
+          printf("%ld:", count_lines + count_n_lines);
+        }
       }
       if (param->o && !param->v) {
         char* p_string = string;
