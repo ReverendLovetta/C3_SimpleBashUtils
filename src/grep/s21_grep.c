@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
     argv = reading_parameters_grep(
         &argc, argv, &options,
         arg_pattern);  // Заполняем структуру с флагами через getopt
-    s21_grep_core(argc, argv, arg_pattern);
+    s21_grep_core(&options, argc, argv, arg_pattern);
   } else {
     fprintf(stderr, "s21_grep: Недостаточно аргументов для выполнения функции");
     return 2;

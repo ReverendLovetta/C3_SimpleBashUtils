@@ -82,7 +82,7 @@ void s21_fill_param_f(char* mass, char* p_optarg) {
   file_f = s21_open_file_grep(p_optarg);
   char mass_f[BUF];
   memset(mass_f, '\0', BUF - 1);
-  while (fgets(mass_f, BUF, file_f) != NULL) {
+  while (fgets(mass_f, BUF, file_f)) {  // Считываем построчно из файла
     if (strlen(mass_f) >= 1) {
       if (mass_f[strlen(mass_f) - 1] == '\n') {
         mass_f[strlen(mass_f) - 1] = '\0';

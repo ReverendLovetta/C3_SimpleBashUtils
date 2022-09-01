@@ -9,6 +9,7 @@
 
 #define N 10000
 #define BUF 100000
+#define ERR 1024
 
 typedef struct {
   unsigned char e : 1;
@@ -25,9 +26,9 @@ typedef struct {
 
 char** reading_parameters_grep(int* argc, char* argv[], flags* param,
                                char* mass);
-void s21_grep_core(  // flags* param,
-    int argc, char* argv[], char* mass);
-void s21_grep_use_flags(flags* param, FILE* file, char* mass);
+void s21_grep_core(flags* param, int argc, char* argv[], char* mass);
+void s21_grep_use_flags(flags* param, FILE* file, char* mass,
+                        const char* filename);
 FILE* s21_open_file_grep(const char filename[]);
 
 #endif  // _SRC_GREP_S21_GREP_H_
