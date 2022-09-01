@@ -3,11 +3,12 @@
 
 #include "s21_grep.h"
 
-void s21_fill_param_f(char* mass, char* p_optarg);
+void s21_fill_param_f(char* mass, FILE* file_f);
 
 char** reading_parameters_grep(int* argc, char* argv[], flags* param,
                                char* mass) {
   char ch = '\0';  // Переменная для хранения флага
+
   while ((ch = getopt(*argc, argv, "e:ivclnhsf:o")) != EOF) {
     switch (ch) {
       case 'e': {
@@ -54,7 +55,17 @@ char** reading_parameters_grep(int* argc, char* argv[], flags* param,
         if (param->f != 1) {
           param->f = 1;
         }
-        s21_fill_param_f(mass, optarg);
+        FILE* file_f =
+            NULL;  // Указатель на поток данных, который содержит паттерны
+        file_f = fopen(optarg, "r");
+        if (file_f == NULL) {
+          fprintf(stderr,
+                  "s21_grep: Не удалось открыть файл с паттернами: %s\n",
+                  optarg);
+          exit(3);
+        }
+        s21_fill_param_f(mass, file_f);
+        fclose(file_f);
         break;
       }
       case 'o': {
@@ -77,9 +88,7 @@ char** reading_parameters_grep(int* argc, char* argv[], flags* param,
   return argv;
 }
 
-void s21_fill_param_f(char* mass, char* p_optarg) {
-  FILE* file_f = NULL;  // Указатель на поток данных, который содержит паттерны
-  file_f = s21_open_file_grep(p_optarg);
+void s21_fill_param_f(char* mass, FILE* file_f) {
   char mass_f[BUF];
   memset(mass_f, '\0', BUF - 1);
   while (fgets(mass_f, BUF, file_f)) {  // Считываем построчно из файла
@@ -100,5 +109,4 @@ void s21_fill_param_f(char* mass, char* p_optarg) {
       memset(mass_f, '\0', strlen(mass_f));
     }
   }
-  fclose(file_f);
 }

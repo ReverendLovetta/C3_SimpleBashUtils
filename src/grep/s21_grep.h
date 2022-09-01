@@ -27,8 +27,8 @@ typedef struct {
 char** reading_parameters_grep(int* argc, char* argv[], flags* param,
                                char* mass);
 void s21_grep_core(flags* param, int argc, char* argv[], char* mass);
-void s21_grep_use_flags(flags* param, FILE* file, char* mass,
-                        const char* filename);
+void s21_grep_use_flags(flags* param, FILE* file, char* mass, char* filename,
+                        int count_files);
 FILE* s21_open_file_grep(const char filename[]);
 
 #endif  // _SRC_GREP_S21_GREP_H_
