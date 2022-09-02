@@ -6,7 +6,7 @@
 
 void s21_cat_use_flags(flags* param, FILE* file) {
 #ifdef __APPLE__
-  char c = '\0';
+  int c = '\0';
   int i = 0;
   int j = 0;
   char temp1 = '\0';
