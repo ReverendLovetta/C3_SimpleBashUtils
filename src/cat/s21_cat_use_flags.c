@@ -6,19 +6,18 @@
 
 void s21_cat_use_flags(flags* param, FILE* file) {
 #ifdef __APPLE__
-  int c = '\0';
   int i = 0;
   int j = 0;
   char temp1 = '\0';
 #endif  // __APPLE__
 
 #ifdef __linux__
-  int c = 0;
   static int i = 1;
   static char temp1 = '\0';
   static int j = 1;
 #endif  // __linux__
 
+  int c = 0;
   char temp2 = '\0';
   char flag_first_str = '0';
   while ((c = fgetc(file)) != EOF) {
