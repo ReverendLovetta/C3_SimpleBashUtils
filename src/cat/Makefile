@@ -16,6 +16,7 @@ s21_cat: *.c s21_cat.h
 
 clean_all: s21_cat clean
 	rm s21_cat
+	rm log.txt
 
 clean:
 	@find . -name "*.o" -exec rm -f {} \;
