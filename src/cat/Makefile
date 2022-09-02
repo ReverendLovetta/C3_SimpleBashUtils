@@ -8,8 +8,15 @@ all: *.c s21_cat.h
 	$(CC) $(CFLAGS) -c *.c
 	$(CC) $(CFLAGS) *.o -o s21_cat
 
+test: 
+	chmod 777 test.sh
+	./test.sh
+
 clean:
 	@find . -name "*.o" -exec rm -f {} \;
 	@find . -name "*.out" -exec rm -f {} \;
 	@echo "Cleaning..."
 	@echo "Sector clear :)"
+
+style:
+	python3 ../../materials/linters/cpplint.py --extensions=c *.c *.h 

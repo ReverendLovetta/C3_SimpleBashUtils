@@ -1,5 +1,5 @@
-#ifndef _SRC_GREP_S21_GREP_H_
-#define _SRC_GREP_S21_GREP_H_
+#ifndef SRC_GREP_S21_GREP_H_
+#define SRC_GREP_S21_GREP_H_
 
 #include <getopt.h>
 #include <regex.h>
@@ -30,4 +30,4 @@ void s21_grep_core(flags* param, int argc, char* argv[], char* mass);
 void s21_grep_use_flags(flags* param, FILE* file, char* mass, char* filename,
                         int count_files);
 
-#endif  // _SRC_GREP_S21_GREP_H_
+#endif  // SRC_GREP_S21_GREP_H_

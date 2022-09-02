@@ -36,7 +36,7 @@ char** reading_parameters(int* argc, char* argv[], flags* param) {
         break;
       }
       default: {
-        fprintf(stderr, "Неизвестный параметр: '%s'\n", optarg);
+        fprintf(stderr, "s21_cat: Неизвестный параметр: '%s'\n", optarg);
         exit(1);
       }
     }
@@ -83,8 +83,16 @@ char** reading_parameters(int* argc, char* argv[], flags* param) {
         param->v = 1;
         break;
       }
+      case 'E': {
+        param->e = 1;
+        break;
+      }
+      case 'T': {
+        param->t = 1;
+        break;
+      }
       default: {
-        fprintf(stderr, "Неизвестный параметр: '%s'\n", optarg);
+        fprintf(stderr, "s21_cat: Неизвестный параметр: '%s'\n", optarg);
         exit(1);
       }
     }

@@ -51,17 +51,16 @@ void s21_cat_use_flags(flags* param, FILE* file) {
         printf("$");
       }
     }
-    if ((c >= 0 && c < 32 && c != 9 && c != 10) || c == 127) {
-      if (param->v == 1) {
-        if (c == 127)
+    if (param->v == 1) {
+      if ((c >= 0 && c < 32 && c != 9 && c != 10) || c == 127) {
+        if (c == 127) {
           c = '?';
-        else {
+        } else {
           c += 64;
         }
         printf("^%c", c);
-      }
-    } else if (c > 127) {
-      if (param->v == 1) {
+
+      } else if (c > 127) {
         if (c < 160) {
           printf("M-^%c", c - 128 + 64);
         } else if (c == 255) {
@@ -69,6 +68,8 @@ void s21_cat_use_flags(flags* param, FILE* file) {
         } else {
           printf("M-%c", c - 128);
         }
+      } else {
+        printf("%c", c);
       }
     } else {
       printf("%c", c);

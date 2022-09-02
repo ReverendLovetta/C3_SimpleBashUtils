@@ -13,7 +13,8 @@ int main(int argc, char* argv[]) {
     argv = reading_parameters(&argc, argv, &start);
     s21_cat_core(&start, argc, argv);
   } else {
-    fprintf(stderr, "Недостаточно аргументов для выполнения функции\n");
+    fprintf(stderr,
+            "s21_cat: Недостаточно аргументов для выполнения функции\n");
     return 1;
   }
   return 0;
