@@ -1,16 +1,21 @@
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g -std=c11 -lm
+CFLAGS = -Wall -Werror -Wextra -g -std=c11
 
 SOURCE_DIR = .
 
-all: *.c s21_cat.h
+all: s21_cat
+
+test: s21_cat
+	chmod 777 test.sh
+	./test.sh
+
+s21_cat: *.c s21_cat.h
 	$(CC) $(CFLAGS) -c *.c
 	$(CC) $(CFLAGS) *.o -o s21_cat
 
-test: 
-	chmod 777 test.sh
-	./test.sh
+clean_all: s21_cat clean
+	rm s21_cat
 
 clean:
 	@find . -name "*.o" -exec rm -f {} \;
