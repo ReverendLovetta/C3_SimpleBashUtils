@@ -25,4 +25,5 @@ clean:
 	@echo "Sector clear :)"
 
 style:
-	python3 ../../materials/linters/cpplint.py --extensions=c *.c *.h 
+	clang-format -n ./*.c
+	clang-format -n ./*.h
